@@ -84,6 +84,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <button id="home-button"><a href="http://www.rahulrodrigues.ca">Home</a></button>
         <Header />
         <Input submit={this.submit} />
         <Result 
