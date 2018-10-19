@@ -11,7 +11,6 @@ class App extends React.Component {
   state = {
       input: "",
       words: "",
-      longestWord: "",
       definition: "",
       author: ""
   }
@@ -21,7 +20,6 @@ class App extends React.Component {
       
       let actualInput = e.target.elements.words.value;
       let Regex = new RegExp("[" + actualInput + "]", "g");
-      console.log(words);
       
       this.setState({
          input: actualInput,
@@ -47,18 +45,40 @@ class App extends React.Component {
       
       this.setState({
           longestWord: longestWord,
-      })
+      }, this.dataCall);
       
-      /*var API_KEY;
-      var api_call = await fetch(`https://api.wordnik.com/v4/word.json/${this.state.longestWord}/definitions?limit=200&includeRelated=false&useCanonical=false&includeTags=false&api_key=${API_KEY}`);
-      var data = await api_call.json();
       
-      this.setState({
-          definition: data[0].text,
-          author: data[0].attributionText,
-      });
       
-      console.log(this.state.definition + "\n" + this.state.author);*/
+      
+  }
+  
+  dataCall = async (e) => {
+      
+     const API_KEY = "b7c469cc2dca6df4d100a0267260482855303a2f673f0a918";
+      
+     const api_call = await fetch(`https://api.wordnik.com/v4/word.json/${this.state.longestWord}/definitions?limit=200&includeRelated=false&useCanonical=false&includeTags=false&api_key=${API_KEY}`);
+    
+     var data = [];
+     data = await api_call.json();
+     /*Log the result
+       console.log(this.state.longestWord);*/
+      
+     /*Log all the data given by Wordnik
+       console.log(data);*/
+      
+     if(data.length === 0) {
+         data.push({
+            text: "Nothing found about this word"
+         });
+     }
+      
+     this.setState({
+         definition: data[0].text,
+         author: data[0].attributionText,
+     });
+      
+     /*Log the saved definition & author given     by Wordnik
+       console.log(this.state.definition + "\n" + this.state.author);*/
   }
     
   render() {
@@ -69,9 +89,12 @@ class App extends React.Component {
         <Result 
             input={this.state.input}
             longestWord={this.state.longestWord}
-            /*definition={this.state.definition}
-            author={this.state.author}*/
+            definition={this.state.definition}
+            author={this.state.author}
         />
+        <footer>
+            This website is using the wordnik API.
+        </footer>
       </div>
     );
   }

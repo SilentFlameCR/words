@@ -67,6 +67,17 @@ p {
     padding: 5px;
 }
 
+.result .answer {
+    font-family: Roboto;
+    font-size: 1em;
+}
+
+footer {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 0.7em;
+}
+
 @media only screen and (min-width: 480px) {
     h1 {
         font-size: 2em; 
@@ -74,5 +85,9 @@ p {
 
     h3 {
        font-size: 1.5em; 
+    }
+    
+    footer {
+        font-size: 1em;
     }
 }

@@ -21,18 +21,18 @@ class Result extends React.Component {
                             <p className="long">{this.props.longestWord}</p>
                         }
                     </div>
-                    /*<div className="col col-12">
+                    <div className="col col-12">
                         {
                             this.props.definition &&
-                            <p className="long">{this.props.definition}</p>
+                            <p className="answer">{this.props.definition}</p>
                         }
                     </div>
                     <div className="col col-12">
                         {
                             this.props.author &&
-                            <p className="long"> -- By, {this.props.author}</p>
+                            <p className="answer"> --  {this.props.author}</p>
                         }
-                    </div>*/
+                    </div>
                     
                         
                     

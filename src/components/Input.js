@@ -10,7 +10,7 @@ class Input extends React.Component {
                    
                     <div className="row">
                        
-                        <div className="col col-12">
+                        <div className="col col-12  offset-md-3 col-md-6">
                             <input id="actual-input" type="text" name="words" placeholder="type the letters you don't want here with no spaces eg. abcd"></input>
                         </div>
                         <div className="col col-12 offset-md-3 col-md-6">
